@@ -1,0 +1,10 @@
+body { background: #f6f8fb; }
+.navbar-brand { letter-spacing: .3px; }
+.card { border: 0; }
+.price { font-size: 1.35rem; font-weight: 700; color: #0a7d2c; }
+.badge-source { font-weight: 500; }
+.alert-card .status-paused { opacity: .6; }
+footer { border-top: 1px solid #e9edf3; margin-top: 2rem; }
+@media (max-width: 575.98px) {
+  .price { font-size: 1.2rem; }
+}

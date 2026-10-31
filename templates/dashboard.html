@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Cerca · {{ APP_NAME }}{% endblock %}
+{% block content %}
+<h1 class="h4 mb-3">Cerca voli</h1>
+
+<form id="searchForm" class="card card-body shadow-sm mb-4">
+  <div class="row g-3">
+    <div class="col-12 col-md-4">
+      <label class="form-label">Modalità</label>
+      <select id="mode" class="form-select">
+        <option value="search">Tratta singola</option>
+        <option value="explore">Ovunque</option>
+        <option value="cheapest">Mese più economico</option>
+      </select>
+    </div>
+    <div class="col-6 col-md-4">
+      <label class="form-label">Partenza (IATA)</label>
+      <input id="origin" class="form-control text-uppercase" maxlength="3" placeholder="MXP" required>
+    </div>
+    <div class="col-6 col-md-4" data-field="destination">
+      <label class="form-label">Destinazione (IATA)</label>
+      <input id="destination" class="form-control text-uppercase" maxlength="3" placeholder="LON">
+    </div>
+    <div class="col-6 col-md-3" data-field="departDate">
+      <label class="form-label">Andata</label>
+      <input id="departDate" type="date" class="form-control">
+    </div>
+    <div class="col-6 col-md-3" data-field="returnDate">
+      <label class="form-label">Ritorno (facolt.)</label>
+      <input id="returnDate" type="date" class="form-control">
+    </div>
+    <div class="col-6 col-md-2" data-field="adults">
+      <label class="form-label">Adulti</label>
+      <input id="adults" type="number" class="form-control" value="1" min="1" max="9">
+    </div>
+    <div class="col-6 col-md-2" data-field="maxPrice" hidden>
+      <label class="form-label">Prezzo max</label>
+      <input id="maxPrice" type="number" class="form-control" placeholder="100">
+    </div>
+    <div class="col-12 col-md-2 d-grid align-self-end">
+      <button class="btn btn-primary" type="submit">Cerca</button>
+    </div>
+  </div>
+</form>
+
+<div id="searchStatus" class="text-muted"></div>
+<div id="results" class="row g-3"></div>
+{% endblock %}
+{% block scripts %}<script>window.__PAGE__ = "dashboard";</script>{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="px-3 py-5 text-center">
+  <h1 class="display-5 fw-bold">Trova e tieni d'occhio le offerte aeree</h1>
+  <p class="lead col-md-8 mx-auto">
+    Cerca voli per una destinazione precisa o scopri dove andare con <strong>“Ovunque”</strong>,
+    crea alert sui prezzi e ricevi un'email quando scende sotto la tua soglia.
+  </p>
+  <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-4">
+    {% if user %}
+      <a href="/dashboard" class="btn btn-primary btn-lg px-4">Vai alla ricerca</a>
+    {% else %}
+      <a href="/signup" class="btn btn-primary btn-lg px-4">Inizia gratis</a>
+      <a href="/login" class="btn btn-outline-secondary btn-lg px-4">Accedi</a>
+    {% endif %}
+  </div>
+</div>
+
+<div class="row g-4 mt-2">
+  <div class="col-12 col-md-4">
+    <div class="card h-100 shadow-sm"><div class="card-body">
+      <h5 class="card-title">🔎 Tre modi di cercare</h5>
+      <p class="card-text">Tratta singola, “Ovunque” dalla tua città, oppure il mese più economico — sempre ordinati per prezzo.</p>
+    </div></div>
+  </div>
+  <div class="col-12 col-md-4">
+    <div class="card h-100 shadow-sm"><div class="card-body">
+      <h5 class="card-title">🔔 Alert intelligenti</h5>
+      <p class="card-text">Scegli una soglia o lascia che avvisi sui cali di prezzo. Puoi <strong>sospendere</strong> un alert quando vuoi.</p>
+    </div></div>
+  </div>
+  <div class="col-12 col-md-4">
+    <div class="card h-100 shadow-sm"><div class="card-body">
+      <h5 class="card-title">📧 Email riepilogativa</h5>
+      <p class="card-text">Un'unica email con tutti i tuoi avvisi, alla frequenza che scegli tu.</p>
+    </div></div>
+  </div>
+</div>
+{% endblock %}

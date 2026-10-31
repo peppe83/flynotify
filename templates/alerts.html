@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}I miei alert · {{ APP_NAME }}{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1 class="h4 mb-0">I miei alert</h1>
+  <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#newAlert">+ Nuovo alert</button>
+</div>
+
+<div class="collapse mb-4" id="newAlert">
+  <form id="alertForm" class="card card-body shadow-sm">
+    <div class="row g-3">
+      <div class="col-6 col-md-3">
+        <label class="form-label">Partenza (IATA)</label>
+        <input id="a_origin" class="form-control text-uppercase" maxlength="3" required>
+      </div>
+      <div class="col-6 col-md-3">
+        <label class="form-label">Destinazione</label>
+        <input id="a_destination" class="form-control text-uppercase" maxlength="3" placeholder="JFK">
+        <div class="form-check mt-1">
+          <input class="form-check-input" type="checkbox" id="a_anywhere">
+          <label class="form-check-label small" for="a_anywhere">Ovunque</label>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <label class="form-label">Andata (dal)</label>
+        <input id="a_depart_from" type="date" class="form-control" required>
+      </div>
+      <div class="col-6 col-md-3">
+        <label class="form-label">Andata (al)</label>
+        <input id="a_depart_to" type="date" class="form-control">
+      </div>
+      <div class="col-6 col-md-3">
+        <label class="form-label">Ritorno (facolt.)</label>
+        <input id="a_return_from" type="date" class="form-control">
+      </div>
+      <div class="col-6 col-md-3">
+        <label class="form-label">Strategia</label>
+        <select id="a_strategy" class="form-select">
+          <option value="threshold">Sotto soglia</option>
+          <option value="drop">Calo di prezzo</option>
+          <option value="deal">Buon affare</option>
+        </select>
+      </div>
+      <div class="col-6 col-md-2">
+        <label class="form-label">Prezzo soglia</label>
+        <input id="a_target_price" type="number" class="form-control" placeholder="120">
+      </div>
+      <div class="col-6 col-md-2">
+        <label class="form-label">Valuta</label>
+        <input id="a_currency" class="form-control text-uppercase" maxlength="3" value="EUR">
+      </div>
+      <div class="col-12 col-md-2 d-grid align-self-end">
+        <button class="btn btn-success" type="submit">Crea</button>
+      </div>
+    </div>
+    <div id="alertFormError" class="text-danger small mt-2"></div>
+  </form>
+</div>
+
+<div id="alertsList" class="row g-3"></div>
+{% endblock %}
+{% block scripts %}<script>window.__PAGE__ = "alerts";</script>{% endblock %}

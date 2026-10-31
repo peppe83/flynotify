@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Preferenze · {{ APP_NAME }}{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-md-8 col-lg-6">
+    <h1 class="h4 mb-3">Preferenze</h1>
+    <form id="prefsForm" class="card card-body shadow-sm">
+      <div class="mb-3">
+        <label class="form-label">Ogni quanto controllare i prezzi</label>
+        <select id="p_interval" class="form-select">
+          {% for h in [2,3,4,6,8,12,24] %}
+            {% if h >= settings.MIN_POLL_INTERVAL_HOURS %}
+            <option value="{{ h }}" {% if h == user.poll_interval_hours %}selected{% endif %}>
+              Ogni {{ h }} ore
+            </option>
+            {% endif %}
+          {% endfor %}
+        </select>
+        <div class="form-text">Minimo consentito: {{ settings.MIN_POLL_INTERVAL_HOURS }} ore.</div>
+      </div>
+      <div class="row g-3">
+        <div class="col-6">
+          <label class="form-label">Valuta</label>
+          <input id="p_currency" class="form-control text-uppercase" maxlength="3" value="{{ user.currency }}">
+        </div>
+        <div class="col-6">
+          <label class="form-label">Fuso orario</label>
+          <input id="p_timezone" class="form-control" value="{{ user.timezone }}">
+        </div>
+      </div>
+      <button class="btn btn-primary mt-3" type="submit">Salva</button>
+      <div id="prefsMsg" class="small mt-2"></div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}<script>window.__PAGE__ = "preferences";</script>{% endblock %}

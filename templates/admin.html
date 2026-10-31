@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Admin · {{ APP_NAME }}{% endblock %}
+{% block content %}
+<h1 class="h4 mb-3">Amministrazione</h1>
+
+<div id="stats" class="row g-3 mb-4"></div>
+
+<h2 class="h5">Utenti</h2>
+<div class="table-responsive">
+  <table class="table table-sm align-middle">
+    <thead><tr><th>Email</th><th>Ruolo</th><th>Stato</th><th class="text-end">Azioni</th></tr></thead>
+    <tbody id="usersBody"></tbody>
+  </table>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+  window.__PAGE__ = "admin";
+  window.__IS_SUPERADMIN__ = {{ 'true' if user.role == 'superadmin' else 'false' }};
+</script>
+{% endblock %}
